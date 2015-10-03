@@ -34,80 +34,25 @@ public class War {
 			Set<Batallion> badBatallions) {
 
 		Map<String, Batallion> neededBatallionToWin = new HashMap<>();
+		Batallion requiredBatallion = null;
 
 		for (Batallion badBatallion : badBatallions) {
-			boolean doesBatallionMatches = false;
-			for (Rule rule : rules) {
-				int i=0;
-				do{
-				Batallion requiredBatallion = rule.execute(badBatallion);
-				if (matchBatallions(requiredBatallion, neededBatallionToWin)) {
-					doesBatallionMatches = true;
+			for(Rule rule:rules){
+				badBatallion = rule.execute(badBatallion,neededBatallionToWin);
+				requiredBatallion = badBatallion;
+				if(!rule.proceed()){
 					break;
 				}
-				badBatallion = requiredBatallion;
-				}while(badBatallion.getCount()>0 && rule.isIterable() && i++ <= Type.values().length);
-				
-				if(doesBatallionMatches)break;
+						
 			}
-			if (!doesBatallionMatches) {
-				status = "LOSES";
-			}
+			
+			
 		}
-
-		return neededBatallionToWin;
-	}
-
-	public boolean matchBatallions(Batallion requiredBatallion,
-			Map<String, Batallion> neededBatallionToWin) {
-
-		for (Batallion goodBatallion : goodNation.getBatallions()) {
-			if (goodBatallion.equals(requiredBatallion)) {
-				if (goodBatallion.getCount() >= requiredBatallion.getCount()) {
-					if (neededBatallionToWin.containsKey(requiredBatallion
-							.getBatallionType().name())) {
-						Batallion temp = neededBatallionToWin
-								.get(requiredBatallion.getBatallionType()
-										.name());
-						temp.setCount(temp.getCount()
-								+ requiredBatallion.getCount());
-						neededBatallionToWin.put(requiredBatallion
-								.getBatallionType().name(), temp);
-					} else {
-						neededBatallionToWin.put(requiredBatallion
-								.getBatallionType().name(), Batallion
-								.copyBatallion(requiredBatallion));
-					}
-					goodBatallion.setCount(goodBatallion.getCount()
-							- requiredBatallion.getCount());
-					requiredBatallion.setCount(0);
-					return true;
-				} else {
-					if (neededBatallionToWin.containsKey(requiredBatallion
-							.getBatallionType().name())) {
-						Batallion temp = neededBatallionToWin
-								.get(requiredBatallion.getBatallionType()
-										.name());
-						temp.setCount(temp.getCount()
-								+ goodBatallion.getCount());
-						neededBatallionToWin.put(requiredBatallion
-								.getBatallionType().name(), temp);
-					} else {
-						neededBatallionToWin.put(requiredBatallion
-								.getBatallionType().name(), Batallion
-								.copyBatallion(goodBatallion));
-					}
-					requiredBatallion.setCount(requiredBatallion.getCount()
-							- goodBatallion.getCount());
-					goodBatallion.setCount(0);
-					return false;
-				}
-			}
-		}
-		return false;
-
-	}
-
+		if(requiredBatallion!=null && requiredBatallion.getCount()>0)
+			status = "LOSES";
+       return neededBatallionToWin;
+	}	
+	
 	public String getWarStatus() {
 		return status;
 	}

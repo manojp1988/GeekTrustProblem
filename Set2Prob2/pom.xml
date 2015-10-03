@@ -4,6 +4,7 @@
 	<groupId>geekTrust</groupId>
 	<artifactId>Set2Prob1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <name> Problem </name>
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>

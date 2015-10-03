@@ -38,8 +38,8 @@ public class  BaseTestClass {
 		
 		war = new War(lingaburu, falicornia);
 		
-		Rule powerRule = new PowerRule(2);
-		Rule substitutionRule = new SubstitutionRule(lingaburu);
+		Rule powerRule = new PowerRule(2, lingaburu,falicornia);
+		Rule substitutionRule = new SubstitutionRule(lingaburu,falicornia);
 		war.addRulesToWar(powerRule);
 		war.addRulesToWar(substitutionRule);
 	}
