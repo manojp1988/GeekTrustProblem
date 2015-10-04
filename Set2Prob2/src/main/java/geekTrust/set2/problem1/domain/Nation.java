@@ -3,7 +3,6 @@ package geekTrust.set2.problem1.domain;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Nation.
  */

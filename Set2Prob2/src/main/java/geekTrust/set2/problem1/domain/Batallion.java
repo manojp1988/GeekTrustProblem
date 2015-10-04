@@ -1,6 +1,5 @@
 package geekTrust.set2.problem1.domain;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Batallion.
  */
