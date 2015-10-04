@@ -1,3 +1,5 @@
+Main-class: Application.java
+
 Input format:
 
 100H 101E 20T 5S
