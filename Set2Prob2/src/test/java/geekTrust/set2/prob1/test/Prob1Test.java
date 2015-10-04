@@ -24,7 +24,11 @@ public class Prob1Test extends BaseTestClass {
 								{ "150H 96E 26T 8S", new int[]{75, 50, 10, 5}, "WINS" },
 								{ "250H 50E 20T 15S", new int[]{100, 38, 10, 5}, "LOSES" },
 								{ "20T 250H 50E 15S", new int[]{100, 38, 10, 5}, "LOSES" },
-								{"100H 50E",new int[] {50, 25},"WINS"},
+								{"100H 50E",new int[] {50, 25, 0, 0},"WINS"},
+								{"300H", new int[]{100, 25,0,0}, "WINS"},
+								{"20S", new int[]{0,0,10, 5}, "WINS"},
+								{"30T 20S", new int[]{0,10, 10 ,5}, "LOSES"},
+								{"300H 60E 16T 8S", new int[]{100, 50 ,10, 5}, "WINS"},
 		};
 	}
 
