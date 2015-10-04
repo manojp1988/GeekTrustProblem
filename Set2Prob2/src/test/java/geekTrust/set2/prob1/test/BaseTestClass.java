@@ -14,13 +14,21 @@ import java.util.Set;
 
 import org.testng.annotations.BeforeMethod;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BaseTestClass.
+ */
 public class  BaseTestClass {
 
 	
 	
+	/** The war. */
 	War war = null;
 
 	
+	/**
+	 * Setup.
+	 */
 	@BeforeMethod
 	public void Setup(){
 		Nation lingaburu = new Nation();
@@ -36,7 +44,7 @@ public class  BaseTestClass {
 		falicornia.addToBatallions(new Batallion(Type.TANK, 40));
 		falicornia.addToBatallions(new Batallion(Type.SLING_GUN, 20));
 		
-		war = new War(lingaburu, falicornia);
+		war = new War();
 		
 		Rule powerRule = new PowerRule(2, lingaburu,falicornia);
 		Rule substitutionRule = new SubstitutionRule(lingaburu,falicornia);
@@ -44,6 +52,12 @@ public class  BaseTestClass {
 		war.addRulesToWar(substitutionRule);
 	}
 	
+	/**
+	 * Gets the input.
+	 *
+	 * @param input the input
+	 * @return the input
+	 */
 	protected Set<Batallion> getInput(String input){
 		
 		Set<Batallion> batallions = new LinkedHashSet<>();
@@ -75,6 +89,12 @@ public class  BaseTestClass {
 		
 	}
 	
+	/**
+	 * Prints the result.
+	 *
+	 * @param war the war
+	 * @param deployableBatallions the deployable batallions
+	 */
 	protected void printResult(War war,
 			Map<String, Batallion> deployableBatallions) {
 		for(Batallion b : deployableBatallions.values()){

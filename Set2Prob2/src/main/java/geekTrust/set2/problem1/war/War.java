@@ -1,35 +1,39 @@
 package geekTrust.set2.problem1.war;
 
 import geekTrust.set2.problem1.domain.Batallion;
-import geekTrust.set2.problem1.domain.Nation;
-import geekTrust.set2.problem1.domain.Type;
 import geekTrust.set2.problem1.war.rule.Rule;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import javax.management.modelmbean.RequiredModelMBean;
-
+/**
+ * The Class War.
+ */
 public class War {
 
-	private String status = "WINS";
-	private Nation goodNation;
-	private Nation badNation;
+	/** The status. */
+	private String status;
+	
+	/** The rules. */
 	private Set<Rule> rules = new LinkedHashSet<>();
 
-	public War(Nation goodNation, Nation badNation) {
-		this.goodNation = goodNation;
-		this.badNation = badNation;
-	}
-
+	/**
+	 * Adds the rules to war.
+	 *
+	 * @param rule the rule
+	 */
 	public void addRulesToWar(Rule rule) {
 		rules.add(rule);
 	}
 
+	/**
+	 * Gets the batallion requirements.
+	 *
+	 * @param badBatallions the bad batallions
+	 * @return the batallion requirements
+	 */
 	public Map<String, Batallion> getBatallionRequirements(
 			Set<Batallion> badBatallions) {
 
@@ -37,22 +41,27 @@ public class War {
 		Batallion requiredBatallion = null;
 
 		for (Batallion badBatallion : badBatallions) {
-			for(Rule rule:rules){
-				badBatallion = rule.execute(badBatallion,neededBatallionToWin);
+			for (Rule rule : rules) {
+				badBatallion = rule.execute(badBatallion, neededBatallionToWin);
 				requiredBatallion = badBatallion;
-				if(!rule.proceed()){
+				if (!rule.proceed()) {
 					break;
 				}
-						
 			}
-			
-			
 		}
-		if(requiredBatallion!=null && requiredBatallion.getCount()>0)
+		if (requiredBatallion.getCount() > 0) {
 			status = "LOSES";
-       return neededBatallionToWin;
-	}	
-	
+		}else {
+			status = "WINS";
+		}
+		return neededBatallionToWin;
+	}
+
+	/**
+	 * Gets the war status.
+	 *
+	 * @return the war status
+	 */
 	public String getWarStatus() {
 		return status;
 	}

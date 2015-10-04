@@ -1,26 +1,38 @@
 package geekTrust.set2.problem1.domain;
 
-import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Nation.
+ */
 public class Nation {
 	
-	private final Set<Batallion> batallions = new TreeSet<>(new Comparator<Batallion>() {
-		@Override
-		public int compare(Batallion b1, Batallion b2) {
-			return b1.getBatallionType().getPowerLevel() - b2.getBatallionType().getPowerLevel();
-		}
-	});
+	/** The batallions. */
+	private final Set<Batallion> batallions = new LinkedHashSet<>();
 
+	/**
+	 * Gets the batallions.
+	 *
+	 * @return the batallions
+	 */
 	public Set<Batallion> getBatallions() {
 		return batallions;
 	}
 
+	/**
+	 * Adds the to batallions.
+	 *
+	 * @param batallion the batallion
+	 */
 	public void addToBatallions(Batallion batallion) {
 		batallions.add(batallion);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Nation [batallions=" + batallions + "]";

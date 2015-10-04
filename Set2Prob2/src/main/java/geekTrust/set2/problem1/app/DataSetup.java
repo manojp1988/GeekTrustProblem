@@ -10,11 +10,24 @@ import geekTrust.set2.problem1.war.rule.SubstitutionRule;
 
 
 
-public class SetUp {
+/**
+ * The Class SetUp.
+ */
+public class DataSetup {
+	
+	/** The lingaburu. */
 	Nation lingaburu = new Nation();
+	
+	/** The falicornia. */
 	Nation falicornia = new Nation();
+	
+	/**
+	 * Gets the war.
+	 *
+	 * @return the war
+	 */
 	public War getWar(){
-		War war = new War(lingaburu, falicornia);
+		War war = new War();
 		
 		Rule powerRule = new PowerRule(2, lingaburu, falicornia);
 		Rule substitutionRule = new SubstitutionRule(lingaburu,falicornia);
@@ -24,6 +37,10 @@ public class SetUp {
 		return war;
 		
 		}
+	
+	/**
+	 * Sets the up armies.
+	 */
 	public void setUpArmies(){
 		lingaburu.addToBatallions(new Batallion(Type.HORSE, 100));
 		lingaburu.addToBatallions(new Batallion(Type.ELEPHANT,50));

@@ -1,9 +1,7 @@
 package geekTrust.set2.prob1.test;
 
 import geekTrust.set2.problem1.domain.Batallion;
-import geekTrust.set2.problem1.war.War;
 
-import java.text.BreakIterator;
 import java.util.Map;
 
 import org.testng.Assert;
@@ -11,11 +9,20 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Prob1Test.
+ */
 public class Prob1Test extends BaseTestClass {
 	
 	
 	   
-	 @DataProvider(name = "data-provider")
+	 /**
+ 	 * Data provider method.
+ 	 *
+ 	 * @return the object[][]
+ 	 */
+ 	@DataProvider(name = "data-provider")
 	    public Object[][] dataProviderMethod() {
 	        return new Object[][] { { "100H 101E 20T 5S", new int[]{52, 50, 10, 3}, "WINS" },
 	        						{ "150H 96E 26T 8S", new int[]{75, 50, 10, 5}, "WINS" },
@@ -24,6 +31,13 @@ public class Prob1Test extends BaseTestClass {
 	        					  };
 	    }
 	
+	/**
+	 * Test1.
+	 *
+	 * @param input the input
+	 * @param expectedOpts the expected opts
+	 * @param warStatus the war status
+	 */
 	@Test(dataProvider = "data-provider")
 	public void test1(String input , int[] expectedOpts, String warStatus){
 		
@@ -52,6 +66,13 @@ public class Prob1Test extends BaseTestClass {
 		}
 		
 	   
+	/**
+	 * Assert check.
+	 *
+	 * @param Key the key
+	 * @param deployableBatallions the deployable batallions
+	 * @param Count the count
+	 */
 	private void assertCheck( String Key,Map<String,Batallion>deployableBatallions,int Count) {
 		if(deployableBatallions.containsKey(Key)){
 			Assert.assertEquals(deployableBatallions.get(Key).getCount(),Count);

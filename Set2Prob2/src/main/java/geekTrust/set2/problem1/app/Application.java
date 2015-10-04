@@ -11,18 +11,39 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The Class Application.
+ */
 public class Application {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
-		SetUp setup = new SetUp();
+		
+		DataSetup setup = new DataSetup();
 		setup.setUpArmies();
 		War war = setup.getWar();
 		
 		Scanner  scanner = new Scanner(System.in);
 		String inputString = scanner.nextLine();
+		scanner.close();
+		
 		Map<String, Batallion>deployableBatallions = war.getBatallionRequirements(getInput(inputString));
 		printResult(war,deployableBatallions);
 		
+		
+		
 	}
+	
+	/**
+	 * Gets the input.
+	 *
+	 * @param input the input
+	 * @return the input
+	 */
 	private static Set<Batallion> getInput(String input) {
 		
 		Set<Batallion>batallions = new LinkedHashSet<>();
@@ -56,6 +77,13 @@ public class Application {
 		return batallions;
 		
 	}
+      
+      /**
+       * Prints the result.
+       *
+       * @param war the war
+       * @param deployableBatallions the deployable batallions
+       */
       private static void printResult(War war,Map<String, Batallion> deployableBatallions) {
     	  for (Batallion b: deployableBatallions.values()) {
     		  System.out.print(b);  

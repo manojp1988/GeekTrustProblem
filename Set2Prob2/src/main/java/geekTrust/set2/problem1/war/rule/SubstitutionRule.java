@@ -4,16 +4,28 @@ import geekTrust.set2.problem1.domain.Batallion;
 import geekTrust.set2.problem1.domain.Nation;
 
 import java.util.Map;
-import java.util.regex.Matcher;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SubstitutionRule.
+ */
 public class SubstitutionRule extends Rule {
 
 
 	
+	/**
+	 * Instantiates a new substitution rule.
+	 *
+	 * @param goodNation the good nation
+	 * @param badNation the bad nation
+	 */
 	public SubstitutionRule(Nation goodNation,Nation badNation) {
 		super(goodNation,badNation);
 	}
 
+	/* (non-Javadoc)
+	 * @see geekTrust.set2.problem1.war.rule.Rule#execute(geekTrust.set2.problem1.domain.Batallion, java.util.Map)
+	 */
 	@Override
 	public Batallion execute(Batallion b1, Map<String,Batallion> neededBatallionToWin) {
 		Batallion requiredBatallion =b1;
@@ -50,6 +62,9 @@ public class SubstitutionRule extends Rule {
 		return requiredBatallion;
 	}
 
+	/* (non-Javadoc)
+	 * @see geekTrust.set2.problem1.war.rule.Rule#proceed()
+	 */
 	@Override
 	public boolean proceed() {
 		// TODO Auto-generated method stub

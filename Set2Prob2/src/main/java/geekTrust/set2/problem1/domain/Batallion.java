@@ -1,30 +1,61 @@
 package geekTrust.set2.problem1.domain;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Batallion.
+ */
 public class Batallion {
 
+	/** The batallion type. */
 	private Type batallionType;
+	
+	/** The count. */
 	private int count;
 
+	/**
+	 * Instantiates a new batallion.
+	 *
+	 * @param batallion the batallion
+	 * @param count the count
+	 */
 	public Batallion(Type batallion, int count) {
 		super();
 		this.batallionType = batallion;
 		this.count = count;
 	}
 
+	/**
+	 * Gets the batallion type.
+	 *
+	 * @return the batallion type
+	 */
 	public Type getBatallionType() {
 		return batallionType;
 	}
 
+	/**
+	 * Gets the count.
+	 *
+	 * @return the count
+	 */
 	public int getCount() {
 		return count;
 	}
 
 	
+	/**
+	 * Sets the count.
+	 *
+	 * @param count the new count
+	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -34,6 +65,9 @@ public class Batallion {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -48,14 +82,14 @@ public class Batallion {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return count + "" + batallionType.name().charAt(0);
 	}
 
-	public static Batallion copyBatallion(Batallion batallion) {
-		return new Batallion(batallion.getBatallionType(),
-				batallion.getCount());
-	}
+	
 
 }
