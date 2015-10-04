@@ -1,6 +1,7 @@
 package geekTrust.set2.problem1.app;
 
 import geekTrust.set2.problem1.domain.Batallion;
+import geekTrust.set2.problem1.domain.Nation;
 import geekTrust.set2.problem1.domain.Type;
 import geekTrust.set2.problem1.war.War;
 
@@ -25,8 +26,11 @@ public class Application {
 	public static void main(String[] args) {
 
 		DataSetup setup = new DataSetup();
-		setup.setUpArmies();
-		War war = setup.declareWar();
+		Nation lingaburu = new Nation();
+		Nation falicornia = new Nation();
+		
+		setup.setUpArmies(lingaburu, falicornia);
+		War war = setup.declareWar(lingaburu, falicornia);
 
 		Scanner scanner = new Scanner(System.in);
 		String inputString = scanner.nextLine();
@@ -34,6 +38,8 @@ public class Application {
 
 		Map<String, Integer> deployableBatallions = war.getBatallionRequirements(getInput(inputString));
 		printResult(war, deployableBatallions);
+		
+		
 
 	}
 

@@ -11,20 +11,18 @@ import geekTrust.set2.problem1.war.rule.SubstitutionRule;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.testng.annotations.BeforeMethod;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class BaseTestClass.
  */
 public class  BaseTestClass {
 
-	
-	
 	/** The war. */
 	War war = null;
-
 	
 	/**
 	 * Setup.
@@ -63,9 +61,13 @@ public class  BaseTestClass {
 		Set<Batallion> batallions = new LinkedHashSet<>();
 		String[]firstLevel = input.split(" ");
 		for(String str : firstLevel){
-			String[]sec = str.split("(?<=\\d)(?=\\D)|(?=\\d)(?<=\\D)");
-			int count = Integer.valueOf(sec[0]);
-			String army = sec[1];
+			Pattern pattern = Pattern.compile("[0-9]+|[A-Z]+");
+			Matcher matcher = pattern.matcher(str);
+			matcher.find();
+			int count = Integer.valueOf(matcher.group());
+
+			matcher.find();
+			String army = matcher.group();
 			
 			switch(army){
 			case "H":
@@ -98,9 +100,7 @@ public class  BaseTestClass {
 	protected static void printResult(War war, Map<String, Integer> deployableBatallions) {
 		for (String key : deployableBatallions.keySet()) {
 			int count = deployableBatallions.get(key);
-			System.out.printf("%d%s",count,key.charAt(0));
-			System.out.print(" ");
-
+			System.out.printf("%d%s ",count,key.charAt(0));
 		}
 		System.out.println(": " + war.getWarStatus());
 	}
