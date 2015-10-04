@@ -27,7 +27,7 @@ public class SubstitutionRule extends Rule {
 	 * @see geekTrust.set2.problem1.war.rule.Rule#execute(geekTrust.set2.problem1.domain.Batallion, java.util.Map)
 	 */
 	@Override
-	public Batallion execute(Batallion b1, Map<String,Batallion> neededBatallionToWin) {
+	public Batallion execute(Batallion b1, Map<String,Integer> neededBatallionToWin) {
 		Batallion requiredBatallion =b1;
 		for (Batallion goodBatallion : goodNation.getBatallions()) {
 			

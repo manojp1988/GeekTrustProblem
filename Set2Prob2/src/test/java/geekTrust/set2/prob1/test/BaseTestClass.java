@@ -95,12 +95,13 @@ public class  BaseTestClass {
 	 * @param war the war
 	 * @param deployableBatallions the deployable batallions
 	 */
-	protected void printResult(War war,
-			Map<String, Batallion> deployableBatallions) {
-		for(Batallion b : deployableBatallions.values()){
-			System.out.print(b);
+	protected static void printResult(War war, Map<String, Integer> deployableBatallions) {
+		for (String key : deployableBatallions.keySet()) {
+			int count = deployableBatallions.get(key);
+			System.out.printf("%d%s",count,key.charAt(0));
 			System.out.print(" ");
+
 		}
-		System.out.println(war.getWarStatus());
+		System.out.println(": " + war.getWarStatus());
 	}
 }

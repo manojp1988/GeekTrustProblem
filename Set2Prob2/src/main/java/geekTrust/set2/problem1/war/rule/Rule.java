@@ -41,7 +41,7 @@ public abstract class Rule {
 	 *            the needed batalloin to win
 	 * @return the batallion
 	 */
-	abstract public Batallion execute(Batallion b1,Map<String, Batallion> neededBatalloinToWin);
+	abstract public Batallion execute(Batallion b1,Map<String, Integer> neededBatalloinToWin);
 
 	/**
 	 * Proceed.
@@ -59,7 +59,7 @@ public abstract class Rule {
 	 *            the needed batallion to win
 	 * @return true, if successful
 	 */
-	public boolean matchBatallions(Batallion requiredBatallion,Map<String, Batallion> neededBatallionToWin) {
+	public boolean matchBatallions(Batallion requiredBatallion,Map<String, Integer> neededBatallionToWin) {
 		for (Batallion goodBatallion : goodNation.getBatallions()) {
 			if (goodBatallion.equals(requiredBatallion)) {
 				if (goodBatallion.getCount() >= requiredBatallion.getCount()) {
@@ -85,25 +85,17 @@ public abstract class Rule {
 	 * @param requiredBatallion the required batallion
 	 * @param neededBatallionToWin the needed batallion to win
 	 */
-	private void populateBatallion(Batallion requiredBatallion,Map<String, Batallion> neededBatallionToWin) {
+	private void populateBatallion(Batallion requiredBatallion,Map<String, Integer> neededBatallionToWin) {
 		String requiredBatallionName = requiredBatallion.getBatallionType().name();
+		int requiredCount = requiredBatallion.getCount();
+
 		if (neededBatallionToWin.containsKey(requiredBatallionName)) {
-			Batallion temp = neededBatallionToWin.get(requiredBatallionName);
-			temp.setCount(temp.getCount() + requiredBatallion.getCount());
+			int temp = neededBatallionToWin.get(requiredBatallionName);
+			temp = temp + requiredCount;
 			neededBatallionToWin.put(requiredBatallionName, temp);
 		} else {
-			neededBatallionToWin.put(requiredBatallionName,copyBatallion(requiredBatallion));
+			neededBatallionToWin.put(requiredBatallionName,requiredCount);
 		}
 	}
 
-	/**
-	 * Copy batallion.
-	 *
-	 * @param batallion
-	 *            the batallion
-	 * @return the batallion
-	 */
-	public static Batallion copyBatallion(Batallion batallion) {
-		return new Batallion(batallion.getBatallionType(), batallion.getCount());
-	}
 }

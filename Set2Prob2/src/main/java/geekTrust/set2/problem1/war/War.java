@@ -34,10 +34,10 @@ public class War {
 	 * @param badBatallions the bad batallions
 	 * @return the batallion requirements
 	 */
-	public Map<String, Batallion> getBatallionRequirements(
+	public Map<String, Integer> getBatallionRequirements(
 			Set<Batallion> badBatallions) {
 
-		Map<String, Batallion> neededBatallionToWin = new HashMap<>();
+		Map<String, Integer> neededBatallionToWin = new HashMap<>();
 		Batallion requiredBatallion = null;
 
 		for (Batallion badBatallion : badBatallions) {

@@ -32,7 +32,7 @@ public class Application {
 		String inputString = scanner.nextLine();
 		scanner.close();
 
-		Map<String, Batallion> deployableBatallions = war.getBatallionRequirements(getInput(inputString));
+		Map<String, Integer> deployableBatallions = war.getBatallionRequirements(getInput(inputString));
 		printResult(war, deployableBatallions);
 
 	}
@@ -86,10 +86,10 @@ public class Application {
 	 * @param deployableBatallions
 	 *            the deployable batallions
 	 */
-	private static void printResult(War war,
-			Map<String, Batallion> deployableBatallions) {
-		for (Batallion b : deployableBatallions.values()) {
-			System.out.print(b);
+	private static void printResult(War war, Map<String, Integer> deployableBatallions) {
+		for (String key : deployableBatallions.keySet()) {
+			int count = deployableBatallions.get(key);
+			System.out.printf("%d%s",count,key.charAt(0));
 			System.out.print(" ");
 
 		}
